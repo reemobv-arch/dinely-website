@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dinely</title>
 <meta name="description" content="Dinely is het platform waar restaurants en creators elkaar vinden. Kies of je een restaurant of een content creator bent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0E0C0A;
@@ -28,9 +31,9 @@
 
   /* logo, midden bovenin */
   .brand{
-    position:absolute;top:26px;left:50%;transform:translateX(-50%);
-    z-index:10;font-family:var(--ff-display);font-size:30px;letter-spacing:.02em;
-    text-shadow:0 2px 24px rgba(0,0,0,.7);pointer-events:none;
+    position:absolute;top:24px;left:50%;transform:translateX(-50%);
+    z-index:10;font-family:var(--ff-display);font-size:clamp(38px,4vw,52px);letter-spacing:.02em;
+    text-shadow:0 2px 28px rgba(0,0,0,.75);pointer-events:none;
   }
   .brand b{color:var(--gold);font-weight:400}
   .brand .dot{color:var(--gold)}
@@ -44,15 +47,15 @@
   }
   .panel .bg{
     position:absolute;inset:0;background-size:cover;background-position:center;
-    filter:brightness(.7) saturate(1.06);transition:transform .9s ease,filter .5s ease;
+    filter:brightness(.88) saturate(1.06);transition:transform .9s ease,filter .5s ease;
   }
   .panel.restaurant .bg{background-image:url("assets/restaurant.jpg")}
   .panel.creator .bg{background-image:url("assets/creator.jpg")}
   .panel::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(8,6,4,.30) 0%, rgba(8,6,4,.34) 42%, rgba(8,6,4,.74) 100%);
+    background:linear-gradient(180deg, rgba(8,6,4,.18) 0%, rgba(8,6,4,.24) 42%, rgba(8,6,4,.60) 100%);
   }
-  .panel:hover .bg{transform:scale(1.05);filter:brightness(.82) saturate(1.12)}
+  .panel:hover .bg{transform:scale(1.05);filter:brightness(1.06) saturate(1.14)}
 
   /* dunne gouden scheiding */
   .panel.restaurant::before{
@@ -69,9 +72,9 @@
   .desc{color:var(--muted);font-size:15px;line-height:1.55;margin:16px 0 26px;max-width:300px}
 
   .cta{
-    display:inline-flex;align-items:center;gap:11px;
-    font-family:var(--ff-mono,var(--ff-body));font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-    padding:15px 28px;border-radius:100px;
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"Manrope",var(--ff-body);font-size:15px;letter-spacing:.005em;font-weight:600;
+    padding:15px 30px;border-radius:100px;
     background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#20180A;
     box-shadow:0 12px 30px -10px rgba(201,162,75,.6);transition:.22s;
   }
