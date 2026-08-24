@@ -3,138 +3,116 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dinely — Live dining, van binnenuit</title>
-<meta name="description" content="Dinely is het platform waar restaurants en creators elkaar vinden. Restaurants zetten deals uit, creators maken de content die tafels vult.">
+<title>Dinely</title>
+<meta name="description" content="Dinely is het platform waar restaurants en creators elkaar vinden. Kies of je een restaurant of een content creator bent.">
 <style>
   :root{
-    --p1:url("assets/photo1.jpg");
-    --bg:#0E0C0A; --line:#2C2621; --line-2:#3B322B;
-    --text:#F3EEE4; --muted:#AA9F90; --muted-2:#7B7264;
+    --bg:#0E0C0A;
+    --text:#F3EEE4; --muted:#CBBFAE;
     --gold:#C9A24B; --gold-2:#E4C67E; --gold-dim:#8C7231;
     --ff-display:"Didot","Bodoni 72","Bodoni MT","Hoefler Text",Garamond,"Times New Roman",serif;
     --ff-body:-apple-system,"Helvetica Neue","Segoe UI",Roboto,system-ui,Arial,sans-serif;
-    --ff-mono:-apple-system,"Helvetica Neue","Segoe UI",Roboto,system-ui,Arial,sans-serif;
     color-scheme:dark;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;height:100%}
   body{
     background:var(--bg);color:var(--text);font-family:var(--ff-body);
-    -webkit-font-smoothing:antialiased;line-height:1.55;
+    -webkit-font-smoothing:antialiased;line-height:1.5;
     height:100dvh;overflow:hidden;position:relative;
   }
   ::selection{background:rgba(201,162,75,.28);color:#fff}
   a{color:inherit;text-decoration:none}
-  h1{margin:0;font-weight:400;text-wrap:balance}
+  h1{margin:0;font-weight:400}
   p{margin:0}
 
-  /* background */
-  .hero-bg{position:fixed;inset:0;background-image:var(--p1);background-size:cover;
-    background-position:62% 45%;filter:saturate(1.08) contrast(1.05) brightness(1.32)}
-  .hero-bg::after{content:"";position:absolute;inset:0;background:
-    radial-gradient(85% 75% at 80% 32%, rgba(201,162,75,.14), transparent 55%),
-    linear-gradient(90deg, rgba(14,12,10,.93) 0%, rgba(14,12,10,.80) 26%, rgba(14,12,10,.42) 58%, rgba(14,12,10,.14) 100%),
-    linear-gradient(180deg, rgba(14,12,10,.30) 0%, transparent 34%, rgba(14,12,10,.62) 82%, var(--bg) 100%)}
-
-  /* stage: fills screen, no scroll */
-  .stage{position:relative;z-index:2;height:100dvh;display:flex;flex-direction:column}
-
-  /* top bar */
-  .topbar{flex:none;height:64px;display:flex;align-items:center;justify-content:space-between;
-    padding:0 30px}
-  .brand{font-family:var(--ff-display);font-size:23px;letter-spacing:.02em}
+  /* logo, midden bovenin */
+  .brand{
+    position:absolute;top:26px;left:50%;transform:translateX(-50%);
+    z-index:10;font-family:var(--ff-display);font-size:30px;letter-spacing:.02em;
+    text-shadow:0 2px 24px rgba(0,0,0,.7);pointer-events:none;
+  }
   .brand b{color:var(--gold);font-weight:400}
   .brand .dot{color:var(--gold)}
-  .login{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-mono);font-size:11px;
-    letter-spacing:.18em;text-transform:uppercase;color:var(--text);
-    padding:11px 20px;border:1px solid var(--line-2);border-radius:100px;transition:.22s;background:rgba(14,12,10,.35)}
-  .login:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,162,75,.06)}
-  .login .arw{transition:.22s}
-  .login:hover .arw{transform:translateX(4px)}
 
-  /* main content anchored to the bottom */
-  .body{flex:1;min-height:0;display:flex;align-items:flex-end;
-    padding:0 30px 40px;gap:30px}
-  .row{width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
-
-  .kicker{display:inline-flex;align-items:center;gap:11px;margin-bottom:24px}
-  .kicker .ln{width:34px;height:1px;background:var(--gold)}
-  .eyebrow{font-family:var(--ff-mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
-  h1{font-family:var(--ff-display);font-size:clamp(48px,9.2vw,124px);line-height:.9;letter-spacing:-.01em}
-  h1 em{font-style:italic;color:var(--gold)}
-  .tagline{margin-top:22px;max-width:520px;font-size:clamp(16px,2vw,20px);color:#E7E0D4;line-height:1.5}
-  .tagline b{color:#fff;font-weight:500}
-  .meta{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px 24px;font-family:var(--ff-mono);
-    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-  .meta span{display:inline-flex;align-items:center;gap:9px}
-  .meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold)}
-
-  /* app store block bottom-right */
-  .stores{flex:none;padding-bottom:4px;display:flex;flex-direction:column;align-items:flex-end}
-  .appbtn{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-mono);font-size:12px;
-    letter-spacing:.14em;text-transform:uppercase;color:#20180A;font-weight:600;
-    background:linear-gradient(180deg,var(--gold-2),var(--gold));padding:16px 32px;border-radius:100px;transition:.2s}
-  .appbtn:hover{filter:brightness(1.06);transform:translateY(-2px)}
-  .appbtn .arw{transition:transform .2s}
-  .appbtn:hover .arw{transform:translateX(4px)}
-  .stores .lbl{font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--muted);margin-top:12px}
-
-  @media (max-width:860px){
-    .row{flex-direction:column;align-items:flex-start;gap:26px}
-    .stores{align-items:flex-start}
-    h1{font-size:clamp(44px,12vw,84px)}
-    .tagline{display:none}
+  /* twee panelen */
+  .split{display:flex;height:100dvh}
+  .panel{
+    position:relative;flex:1 1 50%;min-width:0;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+    text-align:center;padding:0 30px 9vh;transition:flex-basis .5s ease;
   }
-  @media (max-width:520px){
-    .meta{display:none}
+  .panel .bg{
+    position:absolute;inset:0;background-size:cover;background-position:center;
+    filter:brightness(.7) saturate(1.06);transition:transform .9s ease,filter .5s ease;
+  }
+  .panel.restaurant .bg{background-image:url("assets/restaurant.jpg")}
+  .panel.creator .bg{background-image:url("assets/creator.jpg")}
+  .panel::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(8,6,4,.30) 0%, rgba(8,6,4,.34) 42%, rgba(8,6,4,.74) 100%);
+  }
+  .panel:hover .bg{transform:scale(1.05);filter:brightness(.82) saturate(1.12)}
+
+  /* dunne gouden scheiding */
+  .panel.restaurant::before{
+    content:"";position:absolute;top:0;bottom:0;right:0;width:1px;z-index:3;
+    background:linear-gradient(180deg, transparent, rgba(201,162,75,.35), transparent);
   }
 
-  /* korte / liggende schermen: compacter zodat alles zonder scrollen past */
-  @media (max-height:600px){
-    .topbar{height:52px}
-    .kicker{margin-bottom:12px}
-    h1{font-size:clamp(34px,10.5vh,72px)}
-    .tagline{display:none}
-    .meta{margin-top:12px}
-    .body{padding-bottom:22px}
-    .stores .lbl{margin-top:8px}
-    .appbtn{padding:13px 26px}
+  .inner{position:relative;z-index:4;max-width:360px;display:flex;flex-direction:column;align-items:center}
+  .eyebrow{
+    font-family:var(--ff-mono,var(--ff-body));font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--gold-2);margin-bottom:12px;
   }
-  @media (max-height:430px){
-    .meta{display:none}
-    .kicker{margin-bottom:8px}
+  .role{font-family:var(--ff-display);font-size:clamp(34px,4.6vw,58px);line-height:1.02;color:#fff}
+  .desc{color:var(--muted);font-size:15px;line-height:1.55;margin:16px 0 26px;max-width:300px}
+
+  .cta{
+    display:inline-flex;align-items:center;gap:11px;
+    font-family:var(--ff-mono,var(--ff-body));font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+    padding:15px 28px;border-radius:100px;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#20180A;
+    box-shadow:0 12px 30px -10px rgba(201,162,75,.6);transition:.22s;
+  }
+  .panel:hover .cta{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(201,162,75,.7)}
+  .cta .arw{transition:.22s}
+  .panel:hover .cta .arw{transform:translateX(4px)}
+
+  /* mobiel: onder elkaar */
+  @media (max-width:760px){
+    .split{flex-direction:column}
+    .panel{padding:0 24px 6vh;justify-content:flex-end}
+    .panel:first-child{padding-top:84px;justify-content:center}
+    .panel.restaurant::before{top:auto;bottom:0;right:0;left:0;width:auto;height:1px;
+      background:linear-gradient(90deg, transparent, rgba(201,162,75,.35), transparent)}
+    .role{font-size:38px}
   }
 </style>
 </head>
 <body>
-  <div class="hero-bg"></div>
+  <div class="brand">Dine<b>ly</b><span class="dot">.</span></div>
 
-  <div class="stage">
-    <header class="topbar">
-      <div class="brand">Dine<b>ly</b><span class="dot">.</span></div>
-      <a class="login" href="https://business.dinely.nl">Login voor business <span class="arw">→</span></a>
-    </header>
-
-    <main class="body">
-      <div class="row">
-        <div class="content">
-          <span class="kicker"><span class="ln"></span><span class="eyebrow">Amsterdam · Live dining platform</span></span>
-          <!-- Fase 2 (consumenten): "See the vibe before you arrive." -->
-          <h1>Content that<br><em>fills</em> tables.</h1>
-          <p class="tagline"><b>Dinely</b> is het platform waar restaurants en creators elkaar vinden. Restaurants zetten deals uit, creators maken de content die je tafels vult.</p>
-          <div class="meta">
-            <span>Creators maken de content</span>
-            <span>Restaurants zetten deals uit</span>
-            <span>Meer bereik, meer tafels</span>
-          </div>
-        </div>
-
-        <div class="stores">
-          <a class="appbtn" href="https://app.dinely.nl">Open de app <span class="arw">→</span></a>
-          <div class="lbl">Werkt direct in je browser · zet 'm op je beginscherm</div>
-        </div>
+  <main class="split">
+    <a class="panel restaurant" href="https://business.dinely.nl" aria-label="Ik ben een restaurant, naar het dashboard">
+      <div class="bg"></div>
+      <div class="inner">
+        <span class="eyebrow">Ik ben een</span>
+        <h1 class="role">Restaurant</h1>
+        <p class="desc">Zet deals uit en laat creators je tafels vullen.</p>
+        <span class="cta">Naar het dashboard <span class="arw">&rarr;</span></span>
       </div>
-    </main>
-  </div>
+    </a>
+
+    <a class="panel creator" href="https://app.dinely.nl" aria-label="Ik ben een content creator, naar de app">
+      <div class="bg"></div>
+      <div class="inner">
+        <span class="eyebrow">Ik ben een</span>
+        <h1 class="role">Content creator</h1>
+        <p class="desc">Verdien met deals bij restaurants en maak content.</p>
+        <span class="cta">Naar de app <span class="arw">&rarr;</span></span>
+      </div>
+    </a>
+  </main>
 </body>
 </html>
