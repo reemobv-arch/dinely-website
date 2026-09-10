@@ -89,12 +89,12 @@
 
   .cta{
     display:inline-flex;align-items:center;gap:10px;
-    font-family:"Manrope",var(--ff-body);font-size:15px;letter-spacing:.005em;font-weight:600;
-    padding:15px 30px;border-radius:100px;
-    background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#20180A;
-    box-shadow:0 12px 30px -10px rgba(201,162,75,.6);transition:.22s;
+    font-family:"Manrope",var(--ff-body);font-size:15px;letter-spacing:.02em;font-weight:600;
+    padding:14px 30px;border-radius:100px;
+    background:rgba(14,11,7,.55);border:1px solid rgba(201,162,75,.6);color:var(--gold-2);
+    -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);transition:.22s;
   }
-  .panel:hover .cta{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(201,162,75,.7)}
+  .panel:hover .cta{transform:translateY(-2px);background:rgba(20,15,9,.72);border-color:var(--gold-2);color:#fff}
   .cta .arw{transition:.22s}
   .panel:hover .cta .arw{transform:translateX(4px)}
 
