@@ -49,7 +49,7 @@
   /* twee panelen */
   .split{display:flex;height:100dvh}
   .panel{
-    position:relative;flex:1 1 50%;min-width:0;overflow:hidden;
+    position:relative;flex:1 1 0;min-width:0;overflow:hidden;
     display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
     text-align:center;padding:0 30px 9vh;transition:flex-basis .5s ease;
   }
@@ -59,14 +59,15 @@
   }
   .panel.restaurant .bg{background-image:url("assets/restaurant.jpg")}
   .panel.creator .bg{background-image:url("assets/creator.jpg")}
+  .panel.brand .bg{background-image:url("assets/brand.jpg")}
   .panel::after{
     content:"";position:absolute;inset:0;
     background:linear-gradient(180deg, rgba(8,6,4,.18) 0%, rgba(8,6,4,.24) 42%, rgba(8,6,4,.60) 100%);
   }
   .panel:hover .bg{transform:scale(1.05);filter:brightness(1.06) saturate(1.14)}
 
-  /* dunne gouden scheiding */
-  .panel.restaurant::before{
+  /* dunne gouden scheiding tussen de panelen */
+  .panel.restaurant::before, .panel.creator::before{
     content:"";position:absolute;top:0;bottom:0;right:0;width:1px;z-index:3;
     background:linear-gradient(180deg, transparent, rgba(201,162,75,.35), transparent);
   }
@@ -95,7 +96,7 @@
     .split{flex-direction:column}
     .panel{padding:0 24px 6vh;justify-content:flex-end}
     .panel:first-child{padding-top:84px;justify-content:center}
-    .panel.restaurant::before{top:auto;bottom:0;right:0;left:0;width:auto;height:1px;
+    .panel.restaurant::before, .panel.creator::before{top:auto;bottom:0;right:0;left:0;width:auto;height:1px;
       background:linear-gradient(90deg, transparent, rgba(201,162,75,.35), transparent)}
     .role{font-size:38px}
   }
@@ -125,6 +126,16 @@
         <h1 class="role">Content creator</h1>
         <p class="desc">Verdien met deals bij restaurants en maak content.</p>
         <span class="cta">Naar de app <span class="arw">&rarr;</span></span>
+      </div>
+    </a>
+
+    <a class="panel brand" href="https://business.dinely.nl/brand" aria-label="Wij zijn een brand, naar het dashboard">
+      <div class="bg"></div>
+      <div class="inner">
+        <span class="eyebrow">Wij zijn een</span>
+        <h1 class="role">Brand</h1>
+        <p class="desc">Activeer je merk via creators bij toprestaurants.</p>
+        <span class="cta">Naar het dashboard <span class="arw">&rarr;</span></span>
       </div>
     </a>
   </main>
