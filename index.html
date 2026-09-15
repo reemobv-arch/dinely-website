@@ -112,6 +112,10 @@
     /* op mobiel een subtiele, gelijkmatige verdonkering i.p.v. de zware gradient */
     .panel::after{background:linear-gradient(180deg, rgba(8,9,10,.18) 0%, rgba(8,9,10,.30) 55%, rgba(8,9,10,.55) 100%)}
     .role{font-size:38px}
+    /* backdrop-blur is duur tijdens scrollen op mobiel: uit, iets vollere pill */
+    .cta{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(16,18,20,.82)}
+    /* geen transitie op de achtergrondfoto's (hover bestaat toch niet op touch) */
+    .panel .bg{transition:none}
   }
 </style>
 </head>
