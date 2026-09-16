@@ -133,16 +133,21 @@
     body{height:auto;overflow:auto}
     .split{flex-direction:column;height:auto}
     /* Kleinere panelen: het volgende paneel piept eronder, zodat je ziet dat er
-       meer keuzes zijn (en creators niet per ongeluk op Restaurant klikken). */
+       meer keuzes zijn. */
     .panel{flex:none;min-height:62vh;padding:64px 24px 6vh;justify-content:flex-end}
-    /* Eerste paneel: net onder de fold, zodat de rol-tag van het 2e paneel piept. */
-    .panel:first-child{min-height:80svh;padding-top:150px;justify-content:flex-end}
+    /* Op mobiel Content creator bovenaan (Instagram-verkeer is vooral creators). */
+    .panel.creator{order:1}
+    .panel.restaurant{order:2}
+    .panel.brand{order:3}
+    /* Het bovenste (creator) paneel is de hero: het logo staat eroverheen, dus
+       extra ruimte bovenin, en net onder de fold zodat Restaurant eronder piept. */
+    .panel.creator{min-height:80svh;padding-top:150px;justify-content:flex-end}
     .chooser{
       display:block;margin-top:16px;font-family:"Manrope",var(--ff-body);
       font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--silver-2);
       text-shadow:0 1px 12px rgba(0,0,0,.8);
     }
-    /* rol-label bovenaan elk paneel; op het eerste paneel niet (logo staat er). */
+    /* rol-label bovenaan elk paneel; op het hero-paneel niet (logo staat er). */
     .ptag{
       display:block;position:absolute;top:calc(env(safe-area-inset-top,0px) + 20px);
       left:0;right:0;z-index:5;text-align:center;
@@ -150,7 +155,7 @@
       letter-spacing:.24em;text-transform:uppercase;color:#fff;
       text-shadow:0 1px 12px rgba(0,0,0,.85);
     }
-    .panel:first-child .ptag{display:none}
+    .panel.creator .ptag{display:none}
     .panel.restaurant::before, .panel.creator::before{top:auto;bottom:0;right:0;left:0;width:auto;height:1px;
       background:linear-gradient(90deg, transparent, rgba(200,208,218,.35), transparent)}
     /* op mobiel een subtiele, gelijkmatige verdonkering i.p.v. de zware gradient */
